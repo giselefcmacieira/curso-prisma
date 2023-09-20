@@ -7,7 +7,10 @@ import prisma from "./database";
   }); // TODO: Faça a implementação aqui
   const unemployedStudents = await prisma.student.groupBy({
     by: ["class"],
-    _count: {jobId: true},
+    _count: {id: true},
+    where: {
+      jobId: null
+    }
   })
   console.log(students);
   console.log(unemployedStudents)
